@@ -57,7 +57,13 @@ function pausefn() {
 }
 function resetfn() {
 
-    
+    clearInterval(id);
+    state = {
+        min: 0,
+        sec: 0,
+    };
+    setTime(state);
+    id = undefined;
     
 }
 start.addEventListener('click', startfn);
