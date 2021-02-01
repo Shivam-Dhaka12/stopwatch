@@ -33,20 +33,31 @@ function setTime(state) {
     
 }
 
+var id ;
 
 function startfn() {
-    setInterval(function () {
-      var newState = computeNextTime(state);
-      state = newState ;
-      setTime(newState);
-      console.log(newState);  
-    } , 1000);
+
+   if (id===undefined) {
+    id = setInterval(function () {
+        var newState = computeNextTime(state);
+        state = newState ;
+        setTime(newState);
+        console.log(newState);  
+      } , 1000);
+   }
     
 }
 function pausefn() {
     
+    if (id===undefined) {
+        return;
+    }
+    clearInterval(id);
+    id = undefined;
 }
 function resetfn() {
+
+    
     
 }
 start.addEventListener('click', startfn);
